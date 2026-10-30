@@ -1,0 +1,275 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Verdana, Arial, sans-serif;
+  background: linear-gradient(160deg, #1b1b3a, #3a2a6b);
+  min-height: 100vh;
+  color: #2b2b2b;
+}
+
+/* PANTALLAS */
+.pantalla {
+  display: none;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.pantalla.visible {
+  display: flex;
+}
+
+#pantalla-tablero.visible {
+  justify-content: flex-start;
+  padding: 20px;
+  gap: 16px;
+}
+
+/* MENÚ Y MODALES */
+.tarjeta {
+  background: #fffaf0;
+  width: 420px;
+  max-width: 92%;
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  text-align: center;
+}
+
+.tarjeta h1 {
+  margin: 0;
+  font-size: 34px;
+  color: #8338ec;
+}
+
+.tarjeta h2 {
+  margin: 18px 0 10px 0;
+  font-size: 18px;
+  color: #3a2a6b;
+}
+
+.subtitulo {
+  margin: 4px 0 0 0;
+  color: #777;
+}
+
+.reglas {
+  margin: 14px 0 0 0;
+  font-size: 12px;
+  color: #777;
+}
+
+/* CAPITA OSCURA PARA LOS MODALES */
+.capa {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 30, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.escondido {
+  display: none !important;
+}
+
+/* TOP 5 */
+.top5 {
+  list-style: none;
+  margin: 0 0 18px 0;
+  padding: 0;
+  text-align: left;
+}
+
+.top5 li {
+  display: flex;
+  padding: 9px 12px;
+  margin-bottom: 6px;
+  background: #ece6ff;
+  border-radius: 10px;
+}
+
+.top5 li:first-child {
+  background: #ffd166;
+}
+
+.top5 li.aviso {
+  justify-content: center;
+  background: none;
+  color: #888;
+}
+
+.top5 .puesto {
+  width: 28px;
+  font-weight: bold;
+  color: #8338ec;
+}
+
+.top5 .quien {
+  flex: 1;
+}
+
+.top5 .total {
+  font-weight: bold;
+}
+
+/* FORMULARIO Y BOTONES */
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #cfc6ee;
+  border-radius: 8px;
+}
+
+input[type="text"]:focus {
+  border-color: #8338ec;
+  outline: none;
+}
+
+.fila-botones {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  background: #e2dcf5;
+  color: #2b2b2b;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #d1c8ee;
+}
+
+.btn.principal {
+  background: #8338ec;
+  color: white;
+  font-weight: bold;
+}
+
+.btn.principal:hover {
+  background: #6a25c9;
+}
+
+.btn.grande {
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+}
+
+.resultado {
+  font-size: 17px;
+}
+
+.resultado strong {
+  font-size: 26px;
+  color: #8338ec;
+}
+
+/* BARRA SUPERIOR EN PARTIDA */
+.barra {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.dato {
+  padding: 7px 16px;
+  border-radius: 20px;
+  background: #fffaf0;
+  font-weight: bold;
+}
+
+.dato span {
+  color: #8338ec;
+}
+
+/* TABLERO */
+.tablero {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  width: 600px;
+  max-width: 100%;
+}
+
+.carta {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  border: none;
+  border-radius: 10px;
+  background: none;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.dorso,
+.foto {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.dorso {
+  background: #8338ec url("img/reverso.png") center / cover no-repeat;
+  border-radius: 10px;
+}
+
+.carta:hover .dorso {
+  opacity: 0.85;
+}
+
+.foto {
+  display: none;
+  object-fit: cover;
+}
+
+/* LOS DIFERENTES ESTADOS EN LOS QUE PUEDE ESTAR LA CARTA */
+.carta.volteada .dorso {
+  display: none;
+}
+
+.carta.volteada .foto {
+  display: block;
+}
+
+.carta.resuelta {
+  outline: 4px solid #06d6a0;
+  outline-offset: -4px;
+  pointer-events: none;
+}
+
+.carta.error {
+  outline: 4px solid #ef476f;
+  outline-offset: -4px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 500px) {
+  .tablero {
+    gap: 4px;
+  }
+
+  .dato {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+}

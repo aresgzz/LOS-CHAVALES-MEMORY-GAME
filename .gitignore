@@ -1,0 +1,5 @@
+# Librerías instaladas
+node_modules/
+
+# Contraseñas
+.env

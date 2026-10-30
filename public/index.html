@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Los Chavales</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+  // MENÚ CON TOP 5
+  <section id="pantalla-menu" class="pantalla visible">
+    <div class="tarjeta">
+      <h1>Los Chavales</h1>
+      <p class="subtitulo">Encuentra las parejas de la pandilla</p>
+
+      <h2>Top 5 histórico</h2>
+      <ol id="lista-top5" class="top5"></ol>
+
+      <button id="btn-jugar" class="btn principal grande">Jugar</button>
+      <p class="reglas">Tienes 60 segundos desde tu primer click. Acierto +20, fallo -10 y +40 si terminas a tiempo.</p>
+    </div>
+  </section>
+
+  // TABLERITO
+  <section id="pantalla-tablero" class="pantalla">
+    <header class="barra">
+      <div class="dato">Jugador: <span id="dato-jugador">-</span></div>
+      <div class="dato">Tiempo: <span id="dato-tiempo">60</span></div>
+      <div class="dato">Score: <span id="dato-score">0</span></div>
+    </header>
+    <main id="tablero" class="tablero"></main>
+  </section>
+
+  // MODAL PARA PEDIR NOMBRE
+  <div id="modal-nombre" class="capa escondido">
+    <form id="form-nombre" class="tarjeta">
+      <h2>¿Cómo te llamas?</h2>
+      <input id="campo-nombre" type="text" maxlength="20" placeholder="Nombre de usuario" autocomplete="off" required>
+      <div class="fila-botones">
+        <button type="button" id="btn-cancelar" class="btn">Cancelar</button>
+        <button type="submit" class="btn principal">Empezar</button>
+      </div>
+    </form>
+  </div>
+
+  // MODAL DE GAME OVER
+  <div id="modal-final" class="capa escondido">
+    <div class="tarjeta">
+      <h2>GAME OVER</h2>
+      <p id="mensaje-final"></p>
+      <p class="resultado">Puntuación final: <strong id="score-final">0</strong></p>
+      <div class="fila-botones">
+        <button id="btn-salir" class="btn">Salir</button>
+        <button id="btn-repetir" class="btn principal">Volver a jugar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="juego.js"></script>
+</body>
+</html>
